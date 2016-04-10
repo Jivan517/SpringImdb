@@ -1,4 +1,4 @@
-package cs.mum.edu.extraCredit.domain;
+package cs.mum.edu.extraCredit.model;
 
 import javax.persistence.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package cs.mum.edu.extraCredit.domain;
+package cs.mum.edu.extraCredit.model;
 import javax.persistence.*;
 
 import org.hibernate.annotations.Cascade;
@@ -14,7 +14,7 @@ public class Movie {
 	
 	private int year;
 	
-	private String title;
+	private String name;
 	
 	@Lob
 	@Column(table = "MoviePoster")
@@ -53,12 +53,12 @@ public class Movie {
 		this.year = year;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String title) {
+		this.name = title;
 	}
 
 	public byte[] getPoster() {
