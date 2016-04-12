@@ -8,7 +8,7 @@
 <title>Add Director</title>
 </head>
 <body>
-<h1>Imdb</h1>
+<h1>IMDb</h1>
 <h2>Add Director</h2>
 
 <form:form modelAttribute = "director" action="${pageContext.request.contextPath}/directors/add" method="post">

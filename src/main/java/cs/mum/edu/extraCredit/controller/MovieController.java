@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.SimpleTypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,15 +18,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import cs.mum.edu.extraCredit.model.Artist;
+import cs.mum.edu.extraCredit.model.Director;
 import cs.mum.edu.extraCredit.model.Genre;
 import cs.mum.edu.extraCredit.model.Movie;
+import cs.mum.edu.extraCredit.model.Rating;
+import cs.mum.edu.extraCredit.service.ArtistService;
+import cs.mum.edu.extraCredit.service.DirectorService;
 import cs.mum.edu.extraCredit.service.MovieService;
 
 @Controller
-public class MovieController {
+public class MovieController  {
 
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private ArtistService artistService;
+	
+	@Autowired
+	private DirectorService directorService;
 
 	public void setMovieService(MovieService movieService) {
 		this.movieService = movieService;
@@ -44,9 +56,20 @@ public class MovieController {
 	public String add(Model model) {
 		
 		Movie movie = new Movie();
-		movie.setGenres(Arrays.asList(Genre.ACTION, Genre.ADVENTURE, Genre.COMEDY));
+		Genre[] genres = Genre.values();
+		movie.setGenres(Arrays.asList(genres));
+		
+		Rating[] ratings = Rating.values();
+		
+		
+		List<Artist> artists = artistService.getAll();
+		movie.setArtists(artists);
+		
+		List<Director> directors = directorService.getAll();
+		movie.setDirectors(directors);
 		
 		model.addAttribute("movie", movie);
+		model.addAttribute("ratings", Arrays.asList(ratings));
 		return "Movie/addMovie";
 	}
 
@@ -66,6 +89,16 @@ public class MovieController {
 		
 		Movie movie = movieService.get(id);
 		model.addAttribute("movie", movie);
+		
+		Rating[] ratings = Rating.values();
+		model.addAttribute("ratings", Arrays.asList(ratings));
+		
+		Genre[] genres = Genre.values();
+		model.addAttribute("genres", Arrays.asList(genres));
+		
+		model.addAttribute("artists", artistService.getAll());
+		model.addAttribute("directors", directorService.getAll());
+		
 		
 		return "Movie/updateMovie";
 	}

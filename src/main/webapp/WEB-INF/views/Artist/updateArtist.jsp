@@ -8,7 +8,7 @@
 <title>Update Artist</title>
 </head>
 <body>
-<h1>Imdb</h1>
+<h1>IMDb</h1>
 <h2>Update Artist</h2>
 <form:form modelAttribute = "artist" action="${pageContext.request.contextPath}/artists/update/${artist.id}" method="post">
 	

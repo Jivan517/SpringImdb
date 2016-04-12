@@ -68,4 +68,14 @@
 	<bean id="movieService" class="cs.mum.edu.extraCredit.service.MovieServiceImpl"></bean>
 	<bean id="artistService" class="cs.mum.edu.extraCredit.service.ArtistServiceImpl"></bean>
 	<bean id = "directorService" class = "cs.mum.edu.extraCredit.service.DirectorServiceImpl"></bean>
+	
+	<bean id="conversionService"
+      class="org.springframework.context.support.ConversionServiceFactoryBean">
+    <property name="converters">
+        <list>
+            <bean class="cs.mum.edu.extraCredit.service.helper.ArtistFormatter"/>
+        </list>
+    </property>
+</bean>
+	
 </beans>

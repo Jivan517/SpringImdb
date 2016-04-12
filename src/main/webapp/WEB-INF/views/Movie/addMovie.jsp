@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Imdb</h1>
+<h1>IMDb</h1>
 <h2>Add Movie</h2>
 
 <form:form modelAttribute = "movie" action="${pageContext.request.contextPath}/movies/add" method="post">
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td>Rating:</td>
-			<td><form:input path="rating" /> </td>
+			<td><form:select path="rating" items = "${ratings }" /> </td>
 			<td><form:errors path = "rating" cssStyle="color:red" /> </td>
 		</tr>
 		
@@ -41,30 +41,36 @@
 			<td>Genres:</td>
 			<td><form:select path="genres" items="${movie.genres }">
 				
-				
 			</form:select></td>
 			<td><form:errors path = "genres" cssStyle="color:color:red"/> </td>
-<!-- 		</tr> -->
+		</tr>
 
 
-<!-- 			<tr> -->
-<!-- 				<td>Artists:</td> -->
-<%-- 				<td><form:input path="artists" /></td> --%>
-<%-- 				<td><form:errors path="artists" cssStyle="color:color:red" /></td> --%>
-<!-- 			</tr> -->
+			<tr>
+				<td>Artists:</td>
+				<td><form:select path="artists">
+					<form:options items="${movie.artists}" itemLabel="fullName" itemValue="id" />
+				
+				</form:select>
+				</td>
+				<td><form:errors path="artists" cssStyle="color:color:red" /></td>
+			</tr>
 
 
 <!-- 			<tr> -->
 <!-- 				<td>Director:</td> -->
-<%-- 				<td><form:input path="directors" /></td> --%>
+<%-- 				<td><form:select path="directors" > --%>
+<%-- 					<form:options items="${movie.directors}" itemValue="id" itemLabel="fullName" /> --%>
+<%-- 				</form:select> --%>
+<!-- 				</td> -->
 <%-- 				<td><form:errors path="directors" cssStyle="color:color:red" /> --%>
 <!-- 				</td> -->
 <!-- 			</tr> -->
 
 
-<!-- 			<tr> -->
+			<tr>
 			<td>Comment:</td>
-			<td><form:input path="comments" /> </td>
+			<td><form:textarea path="comments" /> </td>
 			<td><form:errors path = "comments" cssStyle="color:color:red"/> </td>
 		</tr>
 				

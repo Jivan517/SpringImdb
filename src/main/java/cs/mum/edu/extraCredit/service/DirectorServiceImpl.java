@@ -3,10 +3,12 @@ package cs.mum.edu.extraCredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import cs.mum.edu.extraCredit.dao.DirectorDao;
 import cs.mum.edu.extraCredit.model.Director;
 
+@Transactional
 public class DirectorServiceImpl implements DirectorService{
 	private DirectorDao directorDao;
 

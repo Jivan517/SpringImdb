@@ -1,7 +1,9 @@
 package cs.mum.edu.extraCredit.model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.*;
 
@@ -12,35 +14,38 @@ public class Movie {
 	@Id @GeneratedValue
 	private int id;
 	
+	@NotNull(message = "Movie release year cannot be blank")
 	private int year;
 	
+	@NotBlank(message = "Movie name cannot be blank")
 	private String name;
 	
 	@Lob
 	@Column(table = "MoviePoster")
 	private byte[] poster;
 	
+	@NotBlank(message = "Movie summary cannot be blank")
 	private String summary;
 	
 	@Enumerated(EnumType.STRING)
 	private Rating rating;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@OrderColumn(name = "position")
 	@Enumerated(EnumType.STRING)
 	private List<Genre> genres = new ArrayList<>();
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@OrderColumn(name = "position")
 	private List<String> comments = new ArrayList<>();
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade(value = {org.hibernate.annotations.CascadeType.DELETE })
 	@JoinTable(name = "MovieDirector")
 	private List<Director> directors = new ArrayList<>();
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL })
 	@JoinTable(name = "MovieArtist")
 	private List<Artist> artists = new ArrayList<>();

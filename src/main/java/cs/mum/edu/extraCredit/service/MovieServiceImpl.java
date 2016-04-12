@@ -3,11 +3,12 @@ package cs.mum.edu.extraCredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import cs.mum.edu.extraCredit.dao.MovieDao;
 import cs.mum.edu.extraCredit.model.Movie;
 
-
+@Transactional
 public class MovieServiceImpl implements MovieService {
 
 	private MovieDao movieDao;

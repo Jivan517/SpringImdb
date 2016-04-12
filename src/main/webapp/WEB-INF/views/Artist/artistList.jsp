@@ -8,7 +8,7 @@
 <title>Artist List</title>
 </head>
 <body>
-<h1>Imdb</h1>
+<h1>IMDb</h1>
 	<h2>Artists</h2>
 	<br>
 	<a href="artists/add"> Add Artist</a>

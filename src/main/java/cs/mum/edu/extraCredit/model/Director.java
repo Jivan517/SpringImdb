@@ -21,6 +21,10 @@ public class Director {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
+	public String getFullName(){
+		return this.firstName + " " + this.lastName;
+	}
 
 	public String getLastName() {
 		return lastName;
@@ -44,6 +48,11 @@ public class Director {
 	
 	public void setId(int id){
 		this.id = id;
+	}
+	
+	@Override
+	public String toString(){
+		return this.firstName + " " + this.lastName;
 	}
 	
 }

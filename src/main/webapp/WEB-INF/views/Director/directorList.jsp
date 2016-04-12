@@ -8,7 +8,7 @@
 <title>Director List</title>
 </head>
 <body>
-<h1>Imdb</h1>
+<h1>IMDb</h1>
 	<h2>Movie Directors</h2>
 	<br>
 	<a href="directors/add"> Add Director</a>

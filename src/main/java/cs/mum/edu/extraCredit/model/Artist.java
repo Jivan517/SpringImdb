@@ -58,6 +58,10 @@ public class Artist {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	public String getFullName(){
+		return this.firstName + " " + this.lastName;
+	}
 
 	public Date getDob() {
 		return dob;
@@ -107,5 +111,9 @@ public class Artist {
 		this.id = id;
 	}
 	
+	@Override
+	public String toString(){
+		return this.firstName + " " + this.lastName;
+	}
 	
 }
