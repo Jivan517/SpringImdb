@@ -1,5 +1,5 @@
 
-#SpringMVC/SpringData/Hibernate/JTA Practice
+#SpringMVC/SpringData/JPA/JTA Practice
 
 ##Submission
 A) The source code: I prefer if you upload your project to Github and send me the link.
