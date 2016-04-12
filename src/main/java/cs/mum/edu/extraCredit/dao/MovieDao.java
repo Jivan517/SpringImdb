@@ -7,7 +7,6 @@ import java.util.*;
 
 import cs.mum.edu.extraCredit.model.Movie;
 
-@Repository
 public interface MovieDao extends JpaRepository<Movie, Integer>{
 
 	List<Movie> findByName(String name);

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import cs.mum.edu.extraCredit.model.Artist;
 import cs.mum.edu.extraCredit.model.Director;
 
-@Repository
 public interface DirectorDao extends JpaRepository<Director, Integer>{
 
 	List<Artist> findByFirstName(String firstName);

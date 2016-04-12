@@ -3,6 +3,11 @@ package cs.mum.edu.extraCredit.model;
 import java.util.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @SecondaryTable(name = "ArtistImage")
@@ -10,13 +15,23 @@ public class Artist {
 	
 	@Id @GeneratedValue
 	private int id;
+	
+	@NotBlank(message = "FirstName cannot be blank")
 	private String firstName;
+	
+	@NotBlank(message = "LastName cannot be blank")
 	private String lastName;
 	
+	@NotNull(message = "DOB cannot be blank")
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Past
 	private Date dob;
+	
+	@NotBlank(message = "Place of Birth cannot be blank")
 	private String placeOfBirth;
 	
+	@NotBlank(message = "Biography cannot be blank")
 	@Lob
 	@Column
 	private String biography;
@@ -86,6 +101,10 @@ public class Artist {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
