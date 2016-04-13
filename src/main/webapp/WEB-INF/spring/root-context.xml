@@ -25,6 +25,7 @@
 	<context:property-placeholder location="classpath:application.properties" />
 	<context:annotation-config/>
 	<context:component-scan base-package="cs.mum.edu.extraCredit.service"></context:component-scan>
+	<context:component-scan base-package="cs.mum.edu.extraCredit.service.helper"></context:component-scan>
 	
 	<bean id="propertyPlaceHolderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"></bean>
@@ -69,13 +70,18 @@
 	<bean id="artistService" class="cs.mum.edu.extraCredit.service.ArtistServiceImpl"></bean>
 	<bean id = "directorService" class = "cs.mum.edu.extraCredit.service.DirectorServiceImpl"></bean>
 	
+	<mvc:annotation-driven conversion-service="conversionService"/>
+	
 	<bean id="conversionService"
       class="org.springframework.context.support.ConversionServiceFactoryBean">
     <property name="converters">
-        <list>
+        <set>
             <bean class="cs.mum.edu.extraCredit.service.helper.ArtistFormatter"/>
-        </list>
+            <bean class="cs.mum.edu.extraCredit.service.helper.StringIdToArtistConvertor"/>
+            
+        </set>
     </property>
 </bean>
 	
+	<bean id = "filter" class = "cs.mum.edu.extraCredit.viewmodel.FilterCriteria"/>
 </beans>

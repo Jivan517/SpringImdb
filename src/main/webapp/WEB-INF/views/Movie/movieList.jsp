@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,16 +20,37 @@
 	<br>
 	<br>
 	<div>
-		<strong>Filter: &nbsp;</strong> <input type="text">
-		<button type="submit">Search</button>
+
+		<strong>Filter: &nbsp;</strong> <br><br>
+		<form:form action="${pageContext.request.contextPath}/movies/search" modelAttribute="filter" method="post">
+
+
+			<div style="display:block; margin-left:20px;">
+				<form:radiobuttons path="id" items="${filterList }"
+					itemLabel="filter" itemValue="id" />
+					&nbsp;
+					<form:errors path = "id" cssStyle="color:red"/>
+			</div>
+			<br>
+			<strong>Search Term: &nbsp;</strong> 
+			<div style="display:inline;">
+			
+				<form:input path="text" /> &nbsp;<form:errors path = "text" cssStyle="color:red"/>
+				<button type="submit">Search</button>
+			</div>
+
+			
+		</form:form>
+
+
 	</div>
 	<br>
-	<table>
+	<table style= "cellpadding:10px;">
 
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Year of Release</th>
+				<th>Year</th>
 				<th>Rating</th>
 
 			</tr>
@@ -39,8 +61,12 @@
 				<td>${movie.name}</td>
 				<td>${movie.year}</td>
 				<td>${movie.rating }</td>
-				<td><a href="movies/update/${movie.id}">edit</a></td>
-				<td><a href="movies/delete/${movie.id}">delete</a></td>
+				<td><form action="movies/update/${movie.id}" method="get">
+						<button>Update</button>
+					</form></td>
+				<td><form action="movies/delete/${movie.id}" method="post">
+						<button type="submit">Delete</button>
+					</form></td>
 			</tr>
 		</c:forEach>
 	</table>

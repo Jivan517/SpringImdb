@@ -57,15 +57,15 @@
 			</tr>
 
 
-<!-- 			<tr> -->
-<!-- 				<td>Director:</td> -->
-<%-- 				<td><form:select path="directors" > --%>
-<%-- 					<form:options items="${movie.directors}" itemValue="id" itemLabel="fullName" /> --%>
-<%-- 				</form:select> --%>
-<!-- 				</td> -->
-<%-- 				<td><form:errors path="directors" cssStyle="color:color:red" /> --%>
-<!-- 				</td> -->
-<!-- 			</tr> -->
+			<tr>
+				<td>Director:</td>
+				<td><form:select path="directors" >
+					<form:options items="${movie.directors}" itemValue="id" itemLabel="fullName" />
+				</form:select>
+				</td>
+				<td><form:errors path="directors" cssStyle="color:color:red" />
+				</td>
+			</tr>
 
 
 			<tr>

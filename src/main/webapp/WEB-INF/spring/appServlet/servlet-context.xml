@@ -25,6 +25,7 @@
 	<context:component-scan base-package="cs.mum.edu.extraCredit.controller"></context:component-scan>
 	
 	<default-servlet-handler/>
-	<annotation-driven/>
+	<annotation-driven />
+	
 	
 </beans:beans>
